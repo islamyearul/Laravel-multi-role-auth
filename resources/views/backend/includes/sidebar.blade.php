@@ -20,8 +20,9 @@
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Roles</a>
                 <div class="dropdown-menu bg-transparent border-0">
                     <a href="{{ route('admin-role.index') }}" class="dropdown-item">Roles</a>
-                    <a href="{{ route('admin-role.create') }}" class="dropdown-item">Create</a>
-                    <a href="element.html" class="dropdown-item">Other Elements</a>
+                    <a href="{{ route('admin-role.create') }}" class="dropdown-item">Create Role</a>
+                    <a href="{{ route('admin-permission.index') }}" class="dropdown-item">Permission</a>
+                    <a href="{{ route('admin-permission.create') }}" class="dropdown-item">Create Permission</a>
                 </div>
             </div>
 
