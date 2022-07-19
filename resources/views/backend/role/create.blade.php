@@ -8,10 +8,12 @@
             <div class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
                     <div class="row">
-                        <p class="text-center text-uppercase font-weight-bold h5">Role Create</p>
+                        
                         <div class="col-md-10 text-left">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
+                                    <span class="text-center text-uppercase font-weight-bold h5 px-3 text-secondary ">Role  - Create </span>
+
                                     <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
                                     <li class="breadcrumb-item"><a href="{{ route('admin-role.index') }}">Roles</a></li>
                                     <li class="breadcrumb-item"><a href="#">Roles Create</a></li>

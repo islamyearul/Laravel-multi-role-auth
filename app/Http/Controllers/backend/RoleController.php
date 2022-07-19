@@ -79,9 +79,9 @@ class RoleController extends Controller
     public function edit($id)
     {
         $Role = Role::findOrFail($id);
-        $PermissionsAll = Permission::all();
+        $permissions = Permission::all();
         $Permission_Groups = User::getPermissionGroupName();
-        return view('backend.role.edit', compact('Role','PermissionsAll', 'Permission_Groups'));
+        return view('backend.role.edit', compact('Role','permissions', 'Permission_Groups'));
     }
 
     /**
@@ -93,7 +93,24 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       
+        $this->validate($request, [
+            'name' => 'required|max:100',
+            'permission' => 'required',
+        ], [
+            'name.required' => 'Role name is required',          
+            'name.max' => 'Role name is too long',
+            'permission.required' => 'Permission is required',
+        ]);
+
+        $Role = Role::findOrFail($id);
+        $Permissions = $request->input('permission');
+        if( !empty($Permissions) ) {
+            $Role->syncPermissions($Permissions);
+        }
+        $Role->name = $request->name;
+        $Role->update();
+        return redirect()->route('admin-role.index')->with('success', 'Role Update successfully');
     }
 
     /**

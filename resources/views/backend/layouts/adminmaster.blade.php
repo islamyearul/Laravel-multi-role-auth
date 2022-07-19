@@ -3,6 +3,7 @@
 
 <head>
     @include('backend/includes/head')
+    @yield('styles')
 </head>
 
 <body class="antialiased">

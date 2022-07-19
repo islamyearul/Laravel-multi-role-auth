@@ -2,6 +2,9 @@
 @section('title')
     <h3>Role</h3>
 @endsection
+@section('styles')
+    @include('backend.partials.datatable-css')
+@endsection
 @section('content')
     <!-- Blank Start -->
     <div class="container-fluid pt-4 px-4">
@@ -9,10 +12,11 @@
             <div class="col-12">
                 <div class="bg-light rounded h-100 p-4">
                     <div class="row">
-                        <p class="text-center text-uppercase font-weight-bold h5">Role</p>
                         <div class="col-md-10 text-left">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
+                                    <span class="text-center text-uppercase font-weight-bold h5 px-3 text-secondary ">Role
+                                    </span>
                                     <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
                                     <li class="breadcrumb-item"><a href="#">Roles</a></li>
                                 </ol>
@@ -22,10 +26,11 @@
                             <div class="text-right"> <a href="{{ route('admin-role.create') }}"
                                     class="btn btn-primary">Create Role</a> </div>
                         </div>
-                    </div><hr> <hr><br>
-                    
+                    </div>
+                    <hr>
+                    <hr><br>
                     <div class="">
-                        <table id="" class="table">
+                        <table id="datatable_example" class="table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
@@ -57,4 +62,8 @@
         </div>
     </div>
     <!-- Blank End -->
+@endsection
+
+@section('script')
+@include('backend.partials.datatable-script')
 @endsection
