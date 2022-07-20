@@ -50,7 +50,7 @@
                                                 class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger bg-danger">Delete</button>
+                                                <button type="submit" class="btn btn-danger bg-danger show_confirm">Delete</button>
                                             </form>
                                     </tr>
                                 @endforeach

@@ -37,5 +37,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css"/>
  
     {{-- data table --}}
+    {{-- Toastr Alart MEssage --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    {{-- Toastr Alart MEssage --}}
     @livewireStyles
     

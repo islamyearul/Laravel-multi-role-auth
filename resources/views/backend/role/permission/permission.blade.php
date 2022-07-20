@@ -54,7 +54,7 @@
                                                 class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger bg-danger">Delete</button>
+                                                <button type="submit" class="show_confirm btn btn-danger bg-danger">Delete</button>
                                             </form>
                                     </tr>
                                 @endforeach
