@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\RoleController;
 use App\Http\Controllers\backend\PermissionController;
+use App\Http\Controllers\backend\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +39,4 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 });
 Route::resource('/admin-role', RoleController::class);
 Route::resource('/admin-permission', PermissionController::class);
+Route::resource('/admin-user', UserController::class);

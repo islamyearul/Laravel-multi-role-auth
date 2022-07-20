@@ -53,6 +53,7 @@ class PermissionController extends Controller
 
             $Permission = Permission::create(['name' => $request->name, 'group_name' => $request->group_name, 'guard_name' => $request->guard_name]);
             return redirect()->route('admin-permission.index')->with('success', 'Permission created successfully');
+            // return redirect()->route('admin-permission.index')->session()->flash('success', 'Permission created successfully');
     }
 
     /**
@@ -102,8 +103,10 @@ class PermissionController extends Controller
             $Permission->name = $request->name;
             $Permission->group_name = $request->group_name;
             $Permission->save();
+          
 
             return redirect()->route('admin-permission.index')->with('success', 'Permission Update successfully');
+
     }
 
     /**

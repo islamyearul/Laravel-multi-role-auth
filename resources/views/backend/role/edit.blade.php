@@ -104,8 +104,6 @@
                 }
             });
         });
-    </script>
-    <script>
         function checkPermissionByGrouup(Classname, CheckThis) {
             const GroupIDname = $("#" + CheckThis.id);
             const ClassCheckBox = $('.' + Classname + ' input');
@@ -115,7 +113,7 @@
             } else {
                 ClassCheckBox.prop('checked', false);
             }
-
+            implementAllcheckedss();
         }
 
         function checkSinglePermission(GroupClassName, GroupId, TotalPermission) {
@@ -127,6 +125,18 @@
             } else {
                 GroupIDname.prop('checked', false);
             }
+            implementAllcheckedss();
+        }
+        function implementAllcheckedss(){
+            const Totalpermission = {{count($permissions)}};
+            const TatalpermissionGroup = {{count($Permission_Groups)}};
+   
+
+            if($('input[type="checkbox"]:checked').length >= (Totalpermission + TatalpermissionGroup) ){
+                $('#checkPermissionAll').prop('checked', true);      
+              } else {
+                $('#checkPermissionAll').prop('checked', false);
+              }
         }
     </script>
 @endsection

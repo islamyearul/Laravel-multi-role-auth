@@ -1,6 +1,6 @@
 @extends('backend.layouts.adminmaster')
 @section('title')
-    <h3>Role</h3>
+    <h3>Users</h3>
 @endsection
 @section('styles')
     @include('backend.partials.datatable-css')
@@ -15,16 +15,16 @@
                         <div class="col-md-10 text-left">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <span class="text-center text-uppercase font-weight-bold h5 px-3 text-secondary ">Role
+                                    <span class="text-center text-uppercase font-weight-bold h5 px-3 text-secondary ">Users
                                     </span>
                                     <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-                                    <li class="breadcrumb-item"><a href="#">Roles</a></li>
+                                    <li class="breadcrumb-item"><a href="#">Users</a></li>
                                 </ol>
                             </nav>
                         </div>
                         <div class="col-md-2">
-                            <div class="text-right"> <a href="{{ route('admin-role.create') }}"
-                                    class="btn btn-primary">Create Role</a> </div>
+                            <div class="text-right"> <a href="{{ route('admin-user.create') }}"
+                                    class="btn btn-primary">Create User</a> </div>
                         </div>
                     </div>
                     <hr>
@@ -34,26 +34,28 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Role Name</th>
-                                    <th scope="col">Permission</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Assign Role</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($roles as $role)
+                                @foreach ($Users as $User)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
-                                        <td>{{ $role->name }}</td>
+                                        <td>{{ $User->name }}</td>
+                                        <td>{{ $User->email }}</td>
                                         <td>
-                                            @foreach ($role->permissions as $permission)
-                                                <span class="badge badge-info">{{$permission->name}}</span>
+                                            @foreach ($User->roles as $role)
+                                                <span class="badge badge-info">{{$role->name}}</span>
                                             @endforeach
                                         </td>
                                         <td>
                                             <div class="text-nowrap">
-                                                <a href="{{ route('admin-role.edit', $role->id) }}"
+                                                <a href="{{ route('admin-user.edit', $User->id) }}"
                                                     class="btn btn-primary">Edit</a>
-                                                <form action="{{ route('admin-role.destroy', $role->id) }}" method="POST"
+                                                <form action="{{ route('admin-user.destroy', $User->id) }}" method="POST"
                                                     class="d-inline">
                                                     @csrf
                                                     @method('DELETE')

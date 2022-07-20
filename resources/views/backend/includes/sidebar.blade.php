@@ -14,15 +14,22 @@
             </div>
         </div>
         <div class="navbar-nav w-100">
-            <a href="/dashboard" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+            <a href="/dashboard" class="nav-item nav-link {{ Route::is('dashboard') ? 'active' : '' }}"><i class="fa fa-tachometer-alt me-2 "></i>Dashboard</a>
             {{-- <a href="{{ route('admin-role.index') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Roles</a> --}}
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Roles</a>
+                <a href="#" class="nav-link dropdown-toggle {{ Route::is('admin-role.index') ||  Route::is('admin-role.create') ||  Route::is('admin-role.edit') ||  Route::is('admin-permission.index') ||  Route::is('admin-permission.create')  || Route::is('permission-role.edit') ? 'active' : '' }}" data-bs-toggle="dropdown"><i class="fas fa-project-diagram me-2"></i>Roles</a>
                 <div class="dropdown-menu bg-transparent border-0">
-                    <a href="{{ route('admin-role.index') }}" class="dropdown-item">Roles</a>
-                    <a href="{{ route('admin-role.create') }}" class="dropdown-item">Create Role</a>
-                    <a href="{{ route('admin-permission.index') }}" class="dropdown-item">Permission</a>
-                    <a href="{{ route('admin-permission.create') }}" class="dropdown-item">Create Permission</a>
+                    <a href="{{ route('admin-role.index') }}" class="dropdown-item  {{ Route::is('admin-role.index') ? 'active' : '' }}">All Roles</a>
+                    <a href="{{ route('admin-role.create') }}" class="dropdown-item {{ Route::is('admin-role.create') ? 'active' : '' }}">Create Role</a>
+                    <a href="{{ route('admin-permission.index') }}" class="dropdown-item {{ Route::is('admin-permission.index') ? 'active' : '' }}">All Permission</a>
+                    <a href="{{ route('admin-permission.create') }}" class="dropdown-item {{ Route::is('admin-permission.create') ? 'active' : '' }}">Create Permission</a>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle {{ Route::is('admin-user.index') ||  Route::is('admin-user.create') ||  Route::is('admin-user.edit') ? 'active' : '' }}" data-bs-toggle="dropdown"><i class="fas fa-users me-2"></i>Users</a>
+                <div class="dropdown-menu bg-transparent border-0">
+                    <a href="{{ route('admin-user.index') }}" class="dropdown-item  {{ Route::is('admin-user.index') ? 'active' : '' }}">All Users</a>
+                    <a href="{{ route('admin-user.create') }}" class="dropdown-item {{ Route::is('admin-user.create') ? 'active' : '' }}">Create User</a>
                 </div>
             </div>
 
