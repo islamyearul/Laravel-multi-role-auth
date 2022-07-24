@@ -11,6 +11,14 @@ use App\Models\User;
 
 class RoleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['role:super-admin|admin']);
+    }
+    // public function __construct()
+    // {
+    //     $this->middleware(['role_or_permission:super-admin|edit articles']);
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -29,6 +37,7 @@ class RoleController extends Controller
      */
     public function create()
     {
+        $this->authorize('role-create');
         $PermissionsAll = Permission::all();
         $Permission_Groups = User::getPermissionGroupName();
         return view('backend.role.create', compact('PermissionsAll', 'Permission_Groups'));
@@ -42,6 +51,7 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {     
+        $this->authorize('role-create');
         $this->validate($request, [
             'name' => 'required|unique:roles|max:100',
             'permission' => 'required',
@@ -78,6 +88,7 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize( 'role-edit');
         $Role = Role::findOrFail($id);
         $permissions = Permission::all();
         $Permission_Groups = User::getPermissionGroupName();
@@ -93,7 +104,7 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
+        $this->authorize( 'role-edit');
         $this->validate($request, [
             'name' => 'required|max:100',
             'permission' => 'required',
@@ -121,6 +132,7 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('role-delete');
        $role = Role::findOrFail($id);
          $role->delete();
             return redirect()->route('admin-role.index')->with('success', 'Role deleted successfully');

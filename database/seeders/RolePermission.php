@@ -91,28 +91,16 @@ class RolePermission extends Seeder
 
             ],
             [
-                'group-name' => 'category',
+                'group-name' => 'role',
                 'permissions' => [
-                    'category-list',
-                    'category-create',
-                    'category-edit',
-                    'category-delete',
-                    'category-show',
-
+                    'role-list',
+                    'role-create',
+                    'role-edit',
+                    'role-delete',
                 ],               
 
             ],
-            [
-                'group-name' => 'tag',
-                'permissions' => [
-                    'tag-list',
-                    'tag-create',
-                    'tag-edit',
-                    'tag-delete',
-                    'tag-show',
-                
-                ],
-            ],
+
         ];
 
         //asign permission to role
@@ -126,11 +114,9 @@ class RolePermission extends Seeder
                 $roleSuperAdmin->givePermissionTo($permission);
                 $permission -> assignRole($roleSuperAdmin);
 
-            }
+            }           
 
-           
-
-        }
+        }   
         
     }
 }
