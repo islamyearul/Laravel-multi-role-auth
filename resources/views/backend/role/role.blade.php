@@ -23,8 +23,11 @@
                             </nav>
                         </div>
                         <div class="col-md-2">
-                            <div class="text-right"> <a href="{{ route('admin-role.create') }}"
-                                    class="btn btn-primary">Create Role</a> </div>
+                            <div class="text-right">
+                                @can('role-create')
+                                    <a href="{{ route('admin-role.create') }}" class="btn btn-primary">Create Role</a>
+                                @endcan
+                            </div>
                         </div>
                     </div>
                     <hr>
@@ -46,19 +49,24 @@
                                         <td>{{ $role->name }}</td>
                                         <td>
                                             @foreach ($role->permissions as $permission)
-                                                <span class="badge badge-info">{{$permission->name}}</span>
+                                                <span class="badge badge-info">{{ $permission->name }}</span>
                                             @endforeach
                                         </td>
                                         <td>
                                             <div class="text-nowrap">
-                                                <a href="{{ route('admin-role.edit', $role->id) }}"
-                                                    class="btn btn-primary">Edit</a>
-                                                <form action="{{ route('admin-role.destroy', $role->id) }}" method="POST"
-                                                    class="d-inline">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger bg-danger show_confirm">Delete</button>
-                                                </form>
+                                                @can('role-edit')
+                                                    <a href="{{ route('admin-role.edit', $role->id) }}"
+                                                        class="btn btn-primary">Edit</a>
+                                                @endcan
+                                                @can('role-delete')
+                                                    <form action="{{ route('admin-role.destroy', $role->id) }}" method="POST"
+                                                        class="d-inline">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit"
+                                                            class="btn btn-danger bg-danger show_confirm">Delete</button>
+                                                    </form>
+                                                @endcan
                                             </div>
                                         </td>
                                     </tr>
@@ -74,5 +82,5 @@
 @endsection
 
 @section('script')
-@include('backend.partials.datatable-script')
+    @include('backend.partials.datatable-script')
 @endsection

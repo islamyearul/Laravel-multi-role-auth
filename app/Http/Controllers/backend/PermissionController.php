@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\DB;
 
 class PermissionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['role:super-admin|admin']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -28,6 +32,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
+        
         $Permissions = Permission::all();
         $permission_groups = DB::table('permissions')->select('group_name as name')->groupBy('group_name')->get();
         return view('backend.role.permission.create', compact('Permissions', 'permission_groups'));
