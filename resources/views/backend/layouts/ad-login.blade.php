@@ -65,13 +65,13 @@
                             <div class="form-floating mb-3">
                                 
                                 <input type="email" class="form-control"  id="email"
-                                    placeholder="name@example.com" name="email" :value="old('email')" required autofocus>
+                                    placeholder="islamyearul@gmail.com" name="email" :value="old('email')" required autofocus>
                                 <label for="floatingInput">Email address</label>
                             </div>
                             <div class="form-floating mb-4">
 
                                 <input type="password" class="form-control" id="password"
-                                    placeholder="Password" name="password" required autocomplete="current-password" />
+                                    placeholder="123456" name="password" required autocomplete="current-password" />
                                 <label >Password</label>
                             </div>
                             <div class="d-flex align-items-center justify-content-between mb-4">
